@@ -22,16 +22,16 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{% url 'inicio'%}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">Sobre Nosotros</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Dejá tu comentario</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'comentarios'%}">Dejá tu comentario</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Base de datos</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">Consultar Base de datos</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Lista de productos'%}">Productos cargados</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Agregar Cliente</a></li>
-                                <li><a class="dropdown-item" href="#!">Agregar Producto</a></li>
+                                <li><a class="dropdown-item" href="{% url 'agregar cliente'%}">Agregar cliente</a></li>
+                                <li><a class="dropdown-item" href="{% url 'agregar producto'%}">Agregar productos</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -1,53 +1,19 @@
-#from django import forms
+from django import forms
 
-# def curso_form(req):
+class ClienteForm(forms.Form):
+    nombre = forms.CharField(max_length=40)
+    apellido = forms.CharField(max_length=40)
+    usuario = forms.CharField(max_length=20)
+    correo_electronico = forms.EmailField()
+    telefono = forms.IntegerField()
 
-#     if req.method == 'POST':
+class ProductoForm(forms.Form):
+    nombre = forms.CharField(max_length=100)
+    precio = forms.DecimalField(max_digits=10, decimal_places=2)
 
-      
+class ComentarioForm(forms.Form):
+    nombre_apellido = forms.CharField(max_length=80)
+    comentario = forms.CharField(widget=forms.Textarea)
 
-#             curso =  Curso(nombre=req.POST['curso'],camada=req.POST['camada'])
-
- 
-
-#             curso.save()
-
- 
-
-#             return render(req, "AppCoder/index.html")
-
- 
-
-#     return render(req,"AppCoder/cursoFormulario.html").
-
-# def curso_form_2(request):
-
- 
-
-#       if request.method == "POST":
-
- 
-
-#             miFormulario = CursoFormulario(request.POST) # Aqui me llega la informacion del html
-
-#             print(miFormulario)
-
- 
-
-#             if miFormulario.is_valid:
-
-#                   informacion = miFormulario.cleaned_data
-
-#                   curso = Curso(nombre=informacion["curso"], camada=informacion["camada"])
-
-#                   curso.save()
-
-#                   return render(request, "AppCoder/index.html")
-
-#       else:
-
-#             miFormulario = CursoFormulario()
-
- 
-
-#       return render(request, "AppCoder/curso_formulario_2.html", {"miFormulario": miFormulario})
+class ProductosCargados(forms.Form):
+    resultado_busqueda = forms.CharField(max_length=100)

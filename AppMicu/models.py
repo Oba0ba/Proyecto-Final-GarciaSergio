@@ -28,4 +28,4 @@ class Opiniones(models.Model):
     comentario = models.TextField()
 
     def __str__(self):
-        return f'Comentario escrito por {self.nombre_apellido}: {self.comentario}'
+        return f'Comentario escrito por {self.nombre_apellido}: "{self.comentario}"'
