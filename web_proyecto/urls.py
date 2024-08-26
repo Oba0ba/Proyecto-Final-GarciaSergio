@@ -20,5 +20,5 @@ from AppMicu import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('AppMicu/', include('AppMicu.urls')),
+    path('', include('AppMicu.urls')),
 ]
