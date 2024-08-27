@@ -15,6 +15,9 @@ def clientes(request):
 def productos(request):
     return render(request, 'AppMicu/productos.html')
 
+def nosotros(request):
+    return render(request, 'AppMicu/sobre_nosotros.html')
+
 def comentarios(request):
     return render(request, 'AppMicu/comentarios.html')
 
