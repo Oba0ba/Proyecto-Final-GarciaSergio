@@ -18,7 +18,7 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Micumán Pastas y más...</a>
+                <a class="navbar-brand" href="{% url 'inicio'%}">Micumán Pastas y más...</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -32,7 +32,32 @@
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="{% url 'agregar cliente'%}">Agregar cliente</a></li>
                                 <li><a class="dropdown-item" href="{% url 'agregar producto'%}">Agregar productos</a></li>
-                            </ul>
+                                </ul>
+                                {# DROPDOWN PARA LA CUENTA DE USUARIO #}
+                                {% if request.user.is_authenticated %}
+                                <img src="{{request.user.imagen.imagen.url}}" alt="Sin Avatar" style="height: 50px;width: 50px;">
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            {{ request.user.username }}
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar cuenta</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'Logout' %}">Cerrar sesión</a></li>
+                                        </ul>
+                                    </div>
+        
+                                {% else %}
+        
+                                    <div class="dropdown">
+                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                            Cuenta
+                                        </button>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                            <li><a class="dropdown-item" href="{% url 'Login' %}">Inciar Sesión</a></li>
+                                            <li><a class="dropdown-item" href="{% url 'Registro' %}">Crear cuenta</a></li>
+                                        </ul>
+                                    </div>
+                                {% endif %}
                         </li>
                     </ul>
                     <!--Botón de carrito comentado-->
@@ -41,8 +66,8 @@
                             <i class="bi-cart-fill me-1"></i>
                             Cart
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button> -->
-                    </form>
+                        </button>
+                    </form>-->
                 </div>
             </div>
         </nav>
@@ -266,14 +291,19 @@
                 </div>
             </div>
         </section>
+        {% endblock %}
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
+        <h1></h1>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
+            <div class="container"><p class="m-0 text-center text-white">Desarrollos WebTuc &copy; Micumán Tienda online</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="js/scripts.js"></script>
-        {% endblock%}
+        
     </body>
 </html>

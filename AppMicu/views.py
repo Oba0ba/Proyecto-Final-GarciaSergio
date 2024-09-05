@@ -2,25 +2,25 @@ from django.shortcuts import render
 from .models import Clientes, Productos, Opiniones
 from django.http import HttpResponse
 from .forms import ClienteForm, ProductoForm, ComentarioForm, ProductosCargados
+from django.views.generic import TemplateView, ListView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
+
 
 # Luego de importar nuestros 3 modelos, vamos a cear nuestras vistas.
 
-def inicio(request):
-    '''Será lo primero que veamos en nuestra página'''
-    return render(request, 'AppMicu/index.html')
+# def inicio(request):
+#     '''Será lo primero que veamos en nuestra página'''
+#     return render(request, 'AppMicu/index.html')
 
-def clientes(request):
-    return render(request, 'AppMicu/clientes.html')
-
-def productos(request):
-    return render(request, 'AppMicu/productos.html')
+class InicioView(TemplateView):
+    template_name = 'AppMicu/index.html'
 
 def nosotros(request):
     return render(request, 'AppMicu/sobre_nosotros.html')
 
-def comentarios(request):
-    return render(request, 'AppMicu/comentarios.html')
-
+@login_required
 def cliente_form(request):
     if request.method == 'POST':
         cliente_formulario = ClienteForm(request.POST) 
@@ -35,7 +35,8 @@ def cliente_form(request):
     else:   
         cliente_formulario= ClienteForm()
         return render(request, "AppMicu/clientesForm.html", {"cliente_formulario": cliente_formulario})
-    
+
+@login_required    
 def producto_form(request):
     if request.method == 'POST':
         producto_formulario = ProductoForm(request.POST) 
@@ -50,7 +51,8 @@ def producto_form(request):
     else:   
         producto_formulario= ProductoForm()
         return render(request, "AppMicu/productosForm.html", {"producto_formulario": producto_formulario})
-    
+
+
 def comentario_form(request):
     if request.method == 'POST':
         comentario_formulario = ComentarioForm(request.POST) 
@@ -67,7 +69,8 @@ def comentario_form(request):
     else:   
         comentario_formulario= ComentarioForm()
         return render(request, "AppMicu/comentariosForm.html", {"comentario_formulario": comentario_formulario})
-        
+
+@login_required        
 def mostrar_producto_form(request):
     productos = Productos.objects.all()
 

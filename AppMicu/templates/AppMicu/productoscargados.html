@@ -10,9 +10,16 @@
 {% load static %}
 {% block cambia %}    
 <h1>Resultados de la búsqueda</h1>
-{% for producto in productos %}
-    <p>{{ producto.nombre }} - {{ producto.precio }}</p>
-{% endfor %}
+<div class="product-list">
+    {% for producto in productos %}
+    <div class="product-card">
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" style="height: 250px;width: 300px;">
+        <div class="product-info">
+            <h3>{{ producto.nombre }}</h3>
+            <p>Precio: ${{ producto.precio }}</p>
+        </div>
+    </div>
+    {% endfor %}
 
 {% endblock %} 
 </body>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar usuario</title>
+</head>
+<body>
+    {% extends "AppMicu/index.html" %}
+    {% load static %}
+    {% block cambia %}
+
+    <h1>Editar perfil de {{usuario}}</h1>
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <table>
+            {{ mi_form.as_table }}
+        </table>
+        <a class="btn btn-primary" href="{% url 'CambiarPass' %}">Cambiar contraseña</a>
+        <input type="submit" value="Actualizar">
+        <a class="btn btn-primary" href="{% url 'inicio' %}">Cancelar</a>
+
+    </form>
+
+{% endblock %}
+</body>
+</html>
