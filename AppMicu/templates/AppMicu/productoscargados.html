@@ -9,14 +9,19 @@
 {% extends "AppMicu/index.html" %}
 {% load static %}
 {% block cambia %}    
-<h1>Resultados de la búsqueda</h1>
+<h3>Productos cargados en base de datos</h3>
 <div class="product-list">
-    {% for producto in productos %}
+    {% for producto in object_list %}
     <div class="product-card">
-        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" style="height: 250px;width: 300px;">
+        <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" style="height: 150px;width: 200px;">
         <div class="product-info">
-            <h3>{{ producto.nombre }}</h3>
+            <h6>{{ producto.nombre }}</h6>
             <p>Precio: ${{ producto.precio }}</p>
+            <p>
+                <a href="{% url 'Detail' producto.id %}">Ver</a>
+                <a href="{% url 'Edit' producto.id %}">Editar</a>
+                <a href="{% url 'Delete' producto.id %}">Borrar</a>
+            </p>
         </div>
     </div>
     {% endfor %}

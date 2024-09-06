@@ -28,14 +28,14 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Base de datos</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'Lista de productos'%}">Productos cargados</a></li>
+                                <li><a class="dropdown-item" href="{% url 'List'%}">Listado de productos cargados</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="{% url 'agregar cliente'%}">Agregar cliente</a></li>
-                                <li><a class="dropdown-item" href="{% url 'agregar producto'%}">Agregar productos</a></li>
+                                <li><a class="dropdown-item" href="{% url 'New'%}">Agregar productos</a></li>
                                 </ul>
                                 {# DROPDOWN PARA LA CUENTA DE USUARIO #}
                                 {% if request.user.is_authenticated %}
-                                <img src="{{request.user.imagen.imagen.url}}" alt="Sin Avatar" style="height: 50px;width: 50px;">
+                                <img src="{{request.user.imagen.imagen.url}}" alt="Sin Avatar" style="height: 50px;width: 85px;">
                                     <div class="dropdown">
                                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                                             {{ request.user.username }}

@@ -9,14 +9,13 @@
 {% extends "AppMicu/index.html" %}
 {% load static %}
 {% block cambia %}    
-
-<h3>Agregar producto nuevo</h3>
-
-<form action="" method="POST" enctype="multipart/form-data">
+<h3>Editar producto</h3>
+<form action="" method="POST">
     {% csrf_token %}
 
     {{ form.as_p }}
-    <input type="submit" value="Guardar">
+    <input type="submit" value="Enviar">
+    <a href="{% url 'List' %}">Regresar</a>
 
 </form>
 
